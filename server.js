@@ -11,7 +11,7 @@ app.use(cors());
 
 const apiUrl = 'open-api.myhelsinki.fi/v1/events';
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 // app.use(express.static('/client/build'));
 
 app.get('/api/', (req, res) => {
