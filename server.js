@@ -9,16 +9,15 @@ require('dotenv').config();
 
 app.use(cors());
 
-const apiUrl = 'open-api.myhelsinki.fi/v1/events';
+const apiUrl = 'open-api.myhelsinki.fi';
 // app.use(express.static(path.join(__dirname, '../client/build')));
 // app.use(express.static('/client/build'));
 
-app.get('/api/v1/events/', (req, res) => {
-  console.log(__dirname)
+const getData = (req, res) => {
   const params = req.query;
   console.log(params);
   const load = async () => {
-    let data = (await axios.get(`http://${apiUrl}/`, {params})).data;
+    let data = (await axios.get(`http://${apiUrl}/v1/events/`, {params})).data;
     return data
   }
   load()
@@ -26,22 +25,15 @@ app.get('/api/v1/events/', (req, res) => {
     console.log("response: ", response)
     res.send(JSON.stringify(response))
   })
+}
+
+app.get('/events/', (req, res) => {
+  getData(req, res);
 })
 
-app.get('/api/', (req, res) => {
-  console.log(__dirname)
-  const params = req.query;
-  console.log(params);
-  const load = async () => {
-    let data = (await axios.get(`http://${apiUrl}/`, {params})).data;
-    return data
-  }
-  load()
-  .then(response => {
-    console.log("response: ", response)
-    res.send(JSON.stringify(response))
-  })
-})
+// app.get('/places/', (req, res) => {
+//   getData(req, res);
+// })
 
 
 // app.get('/api/pins/', (req, res) => {
