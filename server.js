@@ -14,6 +14,7 @@ const apiUrl = 'open-api.myhelsinki.fi';
 // app.use(express.static('/client/build'));
 
 const getData = (req, res) => {
+  console.log(req);
   const query = req.query;
   console.log(query);
   const load = async () => {
