@@ -23,7 +23,7 @@ const getData = (req, res) => {
   }
   load()
   .then(response => {
-    console.log("response: ", response)
+    // console.log("response: ", response)
     res.send(JSON.stringify(response))
   })
 }
