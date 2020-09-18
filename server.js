@@ -13,7 +13,7 @@ const apiUrl = 'open-api.myhelsinki.fi/v1';
 // app.use(express.static(path.join(__dirname, '../client/build')));
 // app.use(express.static('/client/build'));
 
-app.get('/api/v1/events/', (req, res) => {
+const getData = (req, res) => {
   console.log(__dirname)
   const params = req.query;
   console.log(params);
@@ -26,6 +26,10 @@ app.get('/api/v1/events/', (req, res) => {
     console.log("response: ", response)
     res.send(JSON.stringify(response))
   })
+}
+
+app.get('/api/v1/events/', (req, res) => {
+  getData(req, res)
 })
 
 // app.get('/api/pins/', (req, res) => {
