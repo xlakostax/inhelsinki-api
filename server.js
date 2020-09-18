@@ -12,9 +12,9 @@ app.use(cors());
 const apiUrl = 'open-api.myhelsinki.fi/v1';
 // app.use(express.static(path.join(__dirname, '../client/build')));
 // app.use(express.static('/client/build'));
-const getData = (req, res) => {
+const getData = (a, b) => {
   console.log(__dirname)
-  const query = req.query;
+  const query = a.query;
   console.log(query);
   const load = async () => {
     let data = (await axios.get(`http://${apiUrl}/events/`, {query})).data;
@@ -23,7 +23,7 @@ const getData = (req, res) => {
   load()
   .then(response => {
     console.log("response: ", response)
-    res.send(JSON.stringify(response))
+    b.send(JSON.stringify(response))
   })
 }
 
