@@ -15,9 +15,9 @@ const apiUrl = 'open-api.myhelsinki.fi';
 
 const getData = (req, res) => {
   // console.log(req)
-  const params = req.query;
+  const params = req.query; //getting query parameters from client request (e.g. { limit: '2', start: '0' })
   console.log(params);
-  const path = req.path;
+  const path = req.path; //getting path from client request (e.g. /v1/events/ or /v1/places/) to replace it in the request to Myhelsinki API
   console.log(path);
   const load = async () => {
     let data = (await axios.get(`http://${apiUrl}${path}`, {params})).data;
@@ -31,6 +31,10 @@ const getData = (req, res) => {
 }
 
 app.get('/v1/events/', (req, res) => {
+  getData(req, res)
+})
+
+app.get('/v1/places/', (req, res) => {
   getData(req, res)
 })
 
