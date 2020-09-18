@@ -20,7 +20,7 @@ const getData = (req, res) => {
   const path = req.path;
   console.log(path);
   const load = async () => {
-    let data = (await axios.get(`http://${apiUrl}${path}/`, {params})).data;
+    let data = (await axios.get(`http://${apiUrl}${path}`, {params})).data;
     return data
   }
   load()
