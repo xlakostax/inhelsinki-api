@@ -9,16 +9,18 @@ require('dotenv').config();
 
 app.use(cors());
 
-const apiUrl = 'open-api.myhelsinki.fi/v1';
+const apiUrl = 'open-api.myhelsinki.fi';
 // app.use(express.static(path.join(__dirname, '../client/build')));
 // app.use(express.static('/client/build'));
 
 const getData = (req, res) => {
-  console.log(req)
+  // console.log(req)
   const params = req.query;
   console.log(params);
+  const pathname = req.pathname;
+  console.log(pathname);
   const load = async () => {
-    let data = (await axios.get(`http://${apiUrl}/events/`, {params})).data;
+    let data = (await axios.get(`http://${apiUrl}${pathname}`, {params})).data;
     return data
   }
   load()
@@ -28,7 +30,7 @@ const getData = (req, res) => {
   })
 }
 
-app.get('/api/v1/events/', (req, res) => {
+app.get('/v1/events/', (req, res) => {
   getData(req, res)
 })
 
