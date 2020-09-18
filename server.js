@@ -17,8 +17,7 @@ const getData = (req, res) => {
   // console.log(req)
   const params = req.query;
   console.log(params);
-  const pathname = req.pathname;
-  console.log(pathname);
+  console.log(req.pathname);
   const load = async () => {
     let data = (await axios.get(`http://${apiUrl}${pathname}`, {params})).data;
     return data
@@ -45,7 +44,6 @@ app.get('/v1/events/', (req, res) => {
 //
 //       })
 //       .catch(err => console.log('All fucked up in server! ' + err));
-//
 // })
 
 // class Location {
