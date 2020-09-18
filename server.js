@@ -14,10 +14,10 @@ const apiUrl = 'open-api.myhelsinki.fi';
 // app.use(express.static('/client/build'));
 
 const getData = (req, res) => {
-  const params = req.query;
-  console.log(params);
+  const query = req.query;
+  console.log(query);
   const load = async () => {
-    let data = (await axios.get(`http://${apiUrl}/v1/events/`, {params})).data;
+    let data = (await axios.get(`http://${apiUrl}/v1/events/`, {query})).data;
     return data
   }
   load()
