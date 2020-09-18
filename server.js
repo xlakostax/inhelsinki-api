@@ -28,22 +28,6 @@ app.get('/api/v1/events/', (req, res) => {
   })
 })
 
-app.get('/api/', (req, res) => {
-  console.log(__dirname)
-  const params = req.query;
-  console.log(params);
-  const load = async () => {
-    let data = (await axios.get(`http://${apiUrl}/`, {params})).data;
-    return data
-  }
-  load()
-  .then(response => {
-    console.log("response: ", response)
-    res.send(JSON.stringify(response))
-  })
-})
-
-
 // app.get('/api/pins/', (req, res) => {
 //   let params = searchParams(req);
 //   axios.get('http://open-api.myhelsinki.fi/v1/events/' + params)
